@@ -2,21 +2,16 @@ package com.student.studentservice.domain;
 
 import com.student.studentservice.enums.Gender;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "students")
-@TableGenerator(name = "myTableGenerator",
-        table = "my_id_generator",
-        pkColumnName = "student_id",
-        valueColumnName = "id",
-        pkColumnValue = "id",
-        initialValue = 300,
-        allocationSize = 58)
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "myTableGenerator")
-
-    Integer id;
+    @GeneratedValue(generator = "my_entity_seq")
+    @GenericGenerator(name = "my_entity_seq", strategy = "com.student.studentservice.generator.IDGenerator")
+    int id;
 
     String firstName;
 
