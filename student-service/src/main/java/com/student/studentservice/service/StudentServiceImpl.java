@@ -27,10 +27,10 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public StudentResponse getStudent(int id) {
-        Student student = studentRepository.findById(id);
-        if (student == null) throw new RuntimeException("Student not found with ID:" + id);
-        StudentResponse studentResponse = new StudentResponse(student.getId(),student.getFirstName(),student.getLastName(),student.getGender());
+    public StudentResponse getStudent(int schoolNumber) {
+        Student student = studentRepository.findBySchoolNumber(schoolNumber);
+        if (student == null) throw new RuntimeException("Student not found with SchoolNumber:" + schoolNumber);
+        StudentResponse studentResponse = new StudentResponse(student.getSchoolNumber(),student.getFirstName(),student.getLastName(),student.getGender());
         kafkaProducer.studentProducer(studentResponse);
         return studentResponse;
     }

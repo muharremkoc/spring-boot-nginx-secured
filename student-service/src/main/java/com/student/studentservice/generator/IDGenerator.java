@@ -27,7 +27,7 @@ public class IDGenerator implements IdentifierGenerator {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select max(id) as nextval from students");
+            ResultSet rs = statement.executeQuery("select max(school_number) as nextval from students");
 
             if (rs.next()) {
                 int id = rs.getInt("nextval") + incrementSize;

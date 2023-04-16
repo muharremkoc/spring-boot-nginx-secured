@@ -2,29 +2,36 @@ package model;
 
 import com.student.studentservice.enums.Gender;
 
-public class StudentResponse {
+import java.io.Serializable;
 
-    private int id;
+public class StudentResponse implements Serializable {
+
+
+    private Integer schoolNumber;
 
     private String firstName;
 
     private String lastName;
 
+
     private Gender gender;
 
-    public StudentResponse(int id, String firstName, String lastName, Gender gender) {
-        this.id = id;
+    public StudentResponse() {
+    }
+
+    public StudentResponse(Integer schoolNumber, String firstName, String lastName, Gender gender) {
+        this.schoolNumber = schoolNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
     }
 
-    public int getId() {
-        return id;
+    public Integer getSchoolNumber() {
+        return schoolNumber;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSchoolNumber(Integer schoolNumber) {
+        this.schoolNumber = schoolNumber;
     }
 
     public String getFirstName() {

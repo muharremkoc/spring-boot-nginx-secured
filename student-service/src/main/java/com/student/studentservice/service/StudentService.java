@@ -9,6 +9,6 @@ public interface StudentService {
 
     Student createStudent(StudentRequestDto studentRequestDto, Gender gender);
 
-    StudentResponse getStudent(int id);
+    StudentResponse getStudent(int schoolNumber);
 
 }

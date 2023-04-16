@@ -11,7 +11,7 @@ public class Student {
     @Id
     @GeneratedValue(generator = "my_entity_seq")
     @GenericGenerator(name = "my_entity_seq", strategy = "com.student.studentservice.generator.IDGenerator")
-    int id;
+    int schoolNumber;
 
     String firstName;
 
@@ -23,8 +23,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String firstName, String lastName, Gender gender) {
-        this.id = id;
+    public Student(int schoolNumber, String firstName, String lastName, Gender gender) {
+        this.schoolNumber = schoolNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -41,12 +41,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public int getId() {
-        return id;
+    public int getSchoolNumber() {
+        return schoolNumber;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSchoolNumber(int schoolNumber) {
+        this.schoolNumber = schoolNumber;
     }
 
     public String getFirstName() {
