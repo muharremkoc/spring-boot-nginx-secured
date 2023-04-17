@@ -12,6 +12,6 @@ public interface NoteService {
 
     Note createNote(Lessons lessons, NoteRequestDto noteRequestDto);
 
-    List<NoteResponse> notes();
+    List<Note> notes();
 
 }

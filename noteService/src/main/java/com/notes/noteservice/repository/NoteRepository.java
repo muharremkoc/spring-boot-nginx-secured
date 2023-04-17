@@ -8,5 +8,7 @@ public interface NoteRepository extends JpaRepository<Note,Integer> {
 
     Note findById(int id);
 
-    Note findByLessonName(Lessons lessons);
+    boolean existsByLessonName(Lessons lessons);
+
+    boolean existsByStudentID(int schoolNumber);
 }

@@ -24,7 +24,7 @@ public class NoteController {
         return noteService.createNote(lessons, noteRequestDto);
     }
     @GetMapping("")
-    public List<NoteResponse> getNotes(){
+    public List<Note> getNotes(){
         return noteService.notes();
     }
 }
