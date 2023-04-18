@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>student-service</name>
     <description>student-service</description>
+    <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -69,6 +70,7 @@
     </dependencies>
 
     <build>
+        <finalName>student-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

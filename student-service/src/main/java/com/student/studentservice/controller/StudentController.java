@@ -7,8 +7,10 @@ import com.student.studentservice.service.StudentService;
 import model.StudentResponse;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/versions/1/student")
+@RequestMapping("/student")
 public class StudentController {
 
     final StudentService studentService;
@@ -17,12 +19,17 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("")
+    @PostMapping("/create")
     public Student createStudent(@RequestBody StudentRequestDto studentRequestDto, @RequestParam Gender gender){
         return studentService.createStudent(studentRequestDto, gender);
     }
-    @GetMapping("/{id}")
-    public StudentResponse getStudent(@PathVariable("id") int id){
-        return studentService.getStudent(id);
+    @PostMapping("/sendProducer/{schoolNumber}")
+    public StudentResponse sendStudent(@PathVariable("schoolNumber") int schoolNumber){
+        return studentService.sendStudent(schoolNumber);
+    }
+
+    @GetMapping("/list")
+    public List<Student> getStudents(){
+        return studentService.getStudents();
     }
 }

@@ -8,6 +8,8 @@ import com.student.studentservice.repository.StudentRepository;
 import model.StudentResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService{
 
@@ -27,11 +29,17 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public StudentResponse getStudent(int schoolNumber) {
+    public List<Student> getStudents() {
+        return studentRepository.findAll();
+    }
+
+    @Override
+    public StudentResponse sendStudent(int schoolNumber) {
         Student student = studentRepository.findBySchoolNumber(schoolNumber);
         if (student == null) throw new RuntimeException("Student not found with SchoolNumber:" + schoolNumber);
         StudentResponse studentResponse = new StudentResponse(student.getSchoolNumber(),student.getFirstName(),student.getLastName(),student.getGender());
         kafkaProducer.studentProducer(studentResponse);
         return studentResponse;
     }
+
 }

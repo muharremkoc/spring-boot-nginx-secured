@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/versions/1/note")
+@RequestMapping("/note")
 public class NoteController {
 
     private final NoteService noteService;
@@ -19,11 +19,11 @@ public class NoteController {
         this.noteService = noteService;
     }
 
-    @PostMapping("")
+    @PostMapping("/create")
     public Note createNote(@RequestParam Lessons lessons, @RequestBody NoteRequestDto noteRequestDto){
         return noteService.createNote(lessons, noteRequestDto);
     }
-    @GetMapping("")
+    @GetMapping("/list")
     public List<Note> getNotes(){
         return noteService.notes();
     }
