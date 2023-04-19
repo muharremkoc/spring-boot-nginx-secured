@@ -1,7 +1,8 @@
 package com.notes.noteservice.domain;
 
 import com.notes.noteservice.enums.Lessons;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "notes")

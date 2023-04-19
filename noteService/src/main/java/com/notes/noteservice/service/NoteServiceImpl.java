@@ -8,6 +8,8 @@ import com.notes.noteservice.enums.Lessons;
 import com.notes.noteservice.exception.ConflictException;
 import com.notes.noteservice.repository.NoteRepository;
 import model.StudentResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,9 +18,9 @@ import java.util.List;
 @Service
 public class NoteServiceImpl implements NoteService{
 
+    Logger logger = LoggerFactory.getLogger(NoteServiceImpl.class);
+
     private final NoteRepository noteRepository;
-
-
 
     private StudentResponse studentResponse;
 
@@ -46,8 +48,13 @@ public class NoteServiceImpl implements NoteService{
         note.setPoint(noteRequestDto.getPoint());
        note.setStudentID(getStudentResponse().getSchoolNumber());
         note.setLessonName(lessons);
-        if (noteRepository.existsByLessonName(note.getLessonName()) && (noteRequestDto.getStudentId() == getStudentResponse().getSchoolNumber() && noteRepository.existsByStudentID(getStudentResponse().getSchoolNumber()))) throw new ConflictException("This SchoolNumber and Lesson Point already saved");
-        return noteRepository.save(note);
+        if (noteRepository.existsByLessonName(note.getLessonName()) && (noteRequestDto.getStudentId() == getStudentResponse().getSchoolNumber() && noteRepository.existsByStudentID(getStudentResponse().getSchoolNumber()))) {
+            logger.error(String.format("%s %s","This SchoolNumber and Lesson Point already saved with ID:",noteRequestDto.getStudentId()));
+            throw new ConflictException("This SchoolNumber and Lesson Point already saved");
+        }
+        noteRepository.save(note);
+        logger.info(String.format("%s %s","Student's note saved successfully with ID",note.getStudentID()));
+        return note;
     }
 
     @Override

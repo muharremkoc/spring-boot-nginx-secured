@@ -1,8 +1,9 @@
 package com.student.studentservice.domain;
 
 import com.student.studentservice.enums.Gender;
-import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
