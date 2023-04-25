@@ -107,6 +107,7 @@ services:
     volumes:
         - ./nginx.conf:/etc/nginx/nginx.conf:Z
         - ./ssl:/etc/nginx/ssl
+        - ./.htpasswd:/etc/nginx/.htpasswd:Z
     ports:
       - 80:80
       - 443:443
