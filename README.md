@@ -11,6 +11,9 @@ This Project's Goal, Spring-Boot-Nginx-Configuration with SSL Certificated
 - Nginx
 - Jaeger
 - Docker
+- Kafka
+- Kafdrop
+- Zookeeper
 
 
 ## Installation
